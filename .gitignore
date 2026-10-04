@@ -1,0 +1,8 @@
+data/
+__pycache__/
+.DS_Store
+.claude/
+# private notes
+CLAUDE.md
+GUION.md
+plan-proyecto-dani-barza.md
