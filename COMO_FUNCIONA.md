@@ -158,3 +158,24 @@ En fútbol nadie pasa mucho del 55%: hay demasiado azar en un partido. Lo valios
 - xG y calidad de las ocasiones: solo ve goles.
 - Si la eliminatoria ya está decidida en la vuelta.
 - Casi nunca dará el empate como resultado más probable, aunque sí le asigna su porcentaje.
+
+---
+
+## 8. Ajuste por bajas (`predict.py`)
+
+El modelo no sabe quién juega. Para tenerlo en cuenta hay un ajuste manual: en `predict.py` escribes quién falta y de qué tipo es, y se le restan puntos de Elo a ese equipo antes de predecir.
+
+```python
+ABSENT_BARCA = {"Raphinha": "star"}
+ABSENT_OPPONENT = {}
+```
+
+| Tipo | Puntos de Elo que resta |
+|---|---|
+| `star` | 40 |
+| `starter` | 20 |
+| `rotation` | 10 |
+
+Para comparar: jugar en casa vale 60 puntos. Perder a una estrella equivale a dos tercios de esa ventaja.
+
+**Importante:** estos valores los elegí yo, no los aprendió el modelo, porque los datos no traen alineaciones. Por eso `predict.py` muestra siempre las dos predicciones (modelo base y con bajas) y `update.py` lleva el historial de ambas. Si con el tiempo la versión con bajas acierta más, vale la pena hacer la versión completa: entrenar el modelo con los onces iniciales y la nota de cada jugador.

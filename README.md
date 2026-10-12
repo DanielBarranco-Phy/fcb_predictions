@@ -64,16 +64,22 @@ python update.py     # download the data and show the model's track record
 python predict.py    # predict a match
 ```
 
-To choose the match, edit the four lines at the bottom of `predict.py`:
+To choose the match, edit the lines at the bottom of `predict.py`:
 
 ```python
 OPPONENT = "Getafe"
 COMPETITION = "liga"      # liga | champions | copa | supercopa
 VENUE = "away"            # home | away | neutral
 DATE = "10/10/2026"
+ABSENT_BARCA = {"Raphinha": "star"}    # optional: star | starter | rotation
+ABSENT_OPPONENT = {}
 ```
 
+Missing players lower a team's Elo by a fixed amount (star 40, starter 20, rotation 10). These values are assumptions, not learned from data, so the output always shows both predictions: the base model and the one with absences.
+
 Every prediction is saved to `predictions.csv`. `update.py` compares each one with the real result and writes `track_record.csv`.
+
+If a source has not published a result yet, add it as one line in `manual_results.csv`. It is dropped automatically once the official data arrives.
 
 ## 🗂️ Files
 
@@ -94,7 +100,7 @@ COMO_FUNCIONA.md     detailed explanation of the method (in Spanish)
 The model starts simple on purpose and will grow during the season:
 
 - Expected goals (xG) instead of goals only
-- Injuries and suspensions
+- Starting elevens and player ratings as a real model feature (today absences are a manual adjustment)
 - Squad rotation before big matches
 - Predicted scorelines
 

@@ -4,6 +4,7 @@ Sources
 - football-data.co.uk : domestic leagues (results + betting odds), one CSV per season
 - fixturedownload.com : UEFA Champions League results and upcoming fixtures
 - ESPN (site.api.espn.com) : Barça's Copa del Rey and Supercopa matches (unofficial but public API)
+- manual_results.csv : results typed by hand while a source has not published them yet
 """
 import json
 import urllib.request
@@ -129,9 +130,31 @@ def _cups():
     return pd.DataFrame(rows)
 
 
+def _manual(official):
+    """Results typed by hand in manual_results.csv, for when a source has not published a match yet.
+    Once the official source has the match, the manual line is ignored."""
+    f = ROOT / "manual_results.csv"
+    if not f.exists():
+        return pd.DataFrame()
+    df = pd.read_csv(f, comment="#", skipinitialspace=True)
+    df["date"] = pd.to_datetime(df["date"], dayfirst=True)
+    for c in ["comp", "home", "away"]:
+        df[c] = df[c].str.strip()
+    df["league"] = df.comp.map({"liga": "SP1", "champions": "UCL"}).fillna("CUP")
+    df["neutral"] = (df.comp == "supercopa").astype(int)
+    known = set(official.home) | set(official.away)
+    for t in set(df.home) | set(df.away):
+        if t not in known:
+            print(f"  ! manual_results.csv: unknown team '{t}' (check the spelling)")
+    already = [((official.home == r.home) & (official.away == r.away) & ((official.date - r.date).abs().dt.days <= 3)).any()
+               for r in df.itertuples()]
+    return df[[not x for x in already]]
+
+
 def load_matches():
     """All played matches, oldest first, one row per match."""
     df = pd.concat([_leagues(), _champions()[0], _cups()], ignore_index=True)
+    df = pd.concat([df, _manual(df)], ignore_index=True)
     df["result"] = "D"
     df.loc[df.hg > df.ag, "result"] = "H"
     df.loc[df.hg < df.ag, "result"] = "A"

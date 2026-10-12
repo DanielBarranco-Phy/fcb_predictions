@@ -1,0 +1,6 @@
+# Type a result here when update.py does not show it yet. One line per match.
+# The line is ignored automatically once the official source publishes the match.
+# comp: liga | champions | copa | supercopa      date: DD/MM/YYYY      goals after 90 minutes
+# Team names as they appear in the predict.py output (Barcelona, Real Madrid, Ath Madrid, Galatasaray...)
+date,comp,home,away,hg,ag
+10/10/2026,liga,Barcelona,Getafe,3,0
