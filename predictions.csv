@@ -2,3 +2,5 @@ predicted_on,match_date,rival,comp,venue,p_win,p_draw,p_loss,adj_win,adj_draw,ad
 2026-10-03,2026-10-10,Getafe,liga,away,0.6885,0.2341,0.0774,0.6885,0.2341,0.0774,
 2026-10-08,2026-10-10,Getafe,liga,home,0.873,0.097,0.03,0.873,0.097,0.03,
 2026-10-12,2026-10-13,Galatasaray,champions,away,0.6871,0.2139,0.099,0.6488,0.2286,0.1226,Raphinha (star)
+2026-10-12,2026-10-13,Galatasaray,champions,away,0.6871,0.2139,0.099,0.6488,0.2286,0.1226,Raphinha (star)
+2026-10-16,2026-10-17,Betis,liga,away,0.5237,0.2988,0.1775,0.5458,0.2929,0.1613,Firpo (starter)
