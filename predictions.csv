@@ -4,3 +4,5 @@ predicted_on,match_date,rival,comp,venue,p_win,p_draw,p_loss,adj_win,adj_draw,ad
 2026-10-12,2026-10-13,Galatasaray,champions,away,0.6871,0.2139,0.099,0.6488,0.2286,0.1226,Raphinha (star)
 2026-10-12,2026-10-13,Galatasaray,champions,away,0.6871,0.2139,0.099,0.6488,0.2286,0.1226,Raphinha (star)
 2026-10-16,2026-10-17,Betis,liga,away,0.5237,0.2988,0.1775,0.5458,0.2929,0.1613,Firpo (starter)
+2026-10-19,2026-10-20,Paris SG,champions,away,0.3298,0.2148,0.4553,0.3052,0.2115,0.4833,Kounde (starter); Eric Garcia (starter); Nuno Mendes (starter)
+2026-10-22,2026-10-25,Real Madrid,liga,home,0.5578,0.2489,0.1933,0.5578,0.2489,0.1933,Olmo (starter); Eric Garcia (starter); Vinicius (star)
