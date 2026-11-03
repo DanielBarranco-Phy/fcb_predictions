@@ -87,6 +87,8 @@ def predict(rival, comp, venue, when, absent_barca=None, absent_rival=None):
         print(line(m))
     print(f"\nElo   Barcelona {r[BARCA]:.0f}   {rival} {r[rival]:.0f}   (difference {r[BARCA] - r[rival]:+.0f})")
     print(f"Form, last 5 (Barça - opponent): points/match {x['form_pts_diff']:+.2f}, goal diff/match {x['form_gd_diff']:+.2f}")
+    sb, so = features.team_form(state["history"][BARCA], when)[2], features.team_form(state["history"][rival], when)[2]
+    print(f"Shots on target, last 5 league games (for - against, per match): Barcelona {sb:+.1f}   {rival} {so:+.1f}")
     print(f"Rest days (Barça - opponent): {x['rest_diff']:+.0f}")
     print(f"\nMODEL PREDICTION\n  Barça win   {win:6.1%}\n  Draw        {draw:6.1%}\n  Barça loss  {lose:6.1%}")
     if absent_barca or absent_rival:
@@ -123,13 +125,13 @@ def match_date(rival, comp, text):
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  CHANGE ONLY THESE 4 LINES, THEN RUN THE FILE                        ║
 # ╚══════════════════════════════════════════════════════════════════════╝
-OPPONENT = "Real Madrid"       # team name (if you misspell it, you get suggestions)
-COMPETITION = "liga"      # liga | champions | copa | supercopa
+OPPONENT = "Aston Villa"       # team name (if you misspell it, you get suggestions)
+COMPETITION = "champions"      # liga | champions | copa | supercopa
 VENUE = "home"            # home | away | neutral
-DATE = "25/10/2026"       # DD/MM/YYYY. Empty = date from the Champions League calendar, or today
+DATE = ""       # DD/MM/YYYY. Empty = date from the Champions League calendar, or today
 # Missing players, optional. Type: star | starter | rotation. Leave {} if nobody is missing.
-ABSENT_BARCA = {"Olmo": "starter", "Eric Garcia": "starter"}
-ABSENT_OPPONENT = {"Vinicius": "star"}
+ABSENT_BARCA = {}
+ABSENT_OPPONENT = {}
 
 if __name__ == "__main__":
     venue, comp = VENUE.lower().strip(), COMPETITION.lower().strip()

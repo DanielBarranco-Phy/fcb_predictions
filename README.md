@@ -37,20 +37,20 @@ Only La Liga and Champions League matches train the model. The other ten leagues
 
 1. **Collect** (`src/data.py`): download everything into one table, one row per match.
 2. **Rate** (`src/elo.py`): every team gets an Elo rating, updated after each match. Beating a stronger team moves it up a lot; beating a weaker one barely moves it. League starting levels are fitted from Champions League results, so a Turkish team and a Spanish team are on the same scale.
-3. **Build features** (`src/features.py`): Elo difference, form over the last 5 matches (points and goal difference), rest days, competition. Only information available before kickoff.
+3. **Build features** (`src/features.py`): Elo difference, form over the last 5 matches (points and goal difference), shots-on-target difference over the last 5 league matches, rest days, competition. Only information available before kickoff.
 4. **Train** (`src/model.py`): multinomial logistic regression (scikit-learn) on about 2,000 La Liga and Champions League matches. Recent matches count more: a match from two years ago weighs half as much as one from today.
 5. **Predict** (`predict.py`): home, away or neutral venue. For neutral venues the match is simulated both ways and averaged.
 
 ## 📈 Model performance
 
-Trained on matches up to June 2025, tested on 655 later matches it had never seen:
+Trained on matches up to June 2025, tested on 730 later matches it had never seen:
 
 | | Accuracy |
 |---|---|
-| Always pick the home team | 49.2% |
-| **This model** (La Liga + Champions League) | **54.4%** |
-| This model, La Liga only | 51.2% |
-| Bookmakers, La Liga only | 54.6% |
+| Always pick the home team | 49.5% |
+| **This model** (La Liga + Champions League) | **56.0%** |
+| This model, La Liga only | 53.5% |
+| Bookmakers, La Liga only | 54.9% |
 
 Football is noisy and nobody gets far above 55%. The bookmakers still beat this model in La Liga; closing that gap in public is the point of the project.
 

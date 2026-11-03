@@ -83,6 +83,7 @@ Para cada partido se calculan cinco números, siempre como **local menos visitan
 | `elo_diff` | Elo del local − Elo del visitante |
 | `form_pts_diff` | Diferencia de puntos por partido en los últimos 5 (todas las competiciones) |
 | `form_gd_diff` | Diferencia de goles a favor menos en contra por partido, últimos 5 |
+| `form_sot_diff` | Diferencia de tiros a puerta a favor menos en contra por partido, últimos 5 partidos de liga |
 | `rest_diff` | Diferencia de días de descanso (tope de 10 días) |
 | `is_champions` | 1 si es Champions, 0 si no |
 
@@ -179,3 +180,15 @@ ABSENT_OPPONENT = {}
 Para comparar: jugar en casa vale 60 puntos. Perder a una estrella equivale a dos tercios de esa ventaja.
 
 **Importante:** estos valores los elegí yo, no los aprendió el modelo, porque los datos no traen alineaciones. Por eso `predict.py` muestra siempre las dos predicciones (modelo base y con bajas) y `update.py` lleva el historial de ambas. Si con el tiempo la versión con bajas acierta más, vale la pena hacer la versión completa: entrenar el modelo con los onces iniciales y la nota de cada jugador.
+
+---
+
+## 9. Tiros a puerta (añadido en noviembre de 2026)
+
+Los goles tienen mucha suerte: un equipo puede ganar 1-0 con un solo tiro. Los tiros a puerta miden mejor quién crea ocasiones. Para cada equipo se calcula, en sus últimos 5 partidos de liga, tiros a puerta a favor menos tiros a puerta en contra, por partido.
+
+- **Solo partidos de liga:** football-data.co.uk trae los tiros de las ligas, pero no de Champions ni copas. Para un rival europeo se usan sus partidos de su propia liga.
+- **Qué cambió al añadirlo** (misma prueba de 730 partidos): el acierto sube de 55,1% a 56,0% (en La Liga de 52,0% a 53,5%). La calidad de los porcentajes (log loss) queda igual (0,9655 → 0,9658).
+- **Lo que aprendió:** el peso de los tiros a puerta (+0,10) es mayor que el de la diferencia de goles (+0,02). El modelo se fía más de las ocasiones que de los goles, que es lo esperado.
+
+El xG sería todavía mejor, pero la fuente solo lo trae desde esta temporada, así que todavía no hay suficientes partidos para entrenar con él.

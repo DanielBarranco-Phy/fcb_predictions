@@ -78,6 +78,7 @@ def _leagues():
             "hg": df["FTHG"].astype(int),
             "ag": df["FTAG"].astype(int),
             "neutral": 0,
+            "hst": df.get("HST"), "ast": df.get("AST"),  # shots on target
             # market-average odds: used only as a benchmark, never as a model input
             "odds_h": df.get("AvgH"), "odds_d": df.get("AvgD"), "odds_a": df.get("AvgA"),
         }))
