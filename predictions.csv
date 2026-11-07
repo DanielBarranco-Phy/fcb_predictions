@@ -8,3 +8,4 @@ predicted_on,match_date,rival,comp,venue,p_win,p_draw,p_loss,adj_win,adj_draw,ad
 2026-10-22,2026-10-25,Real Madrid,liga,home,0.5578,0.2489,0.1933,0.5578,0.2489,0.1933,Olmo (starter); Eric Garcia (starter); Vinicius (star)
 2026-10-30,2026-10-31,Alaves,liga,home,0.8563,0.1093,0.0344,0.8251,0.1281,0.0467,Kounde (starter); Olmo (starter); Espart (rotation)
 2026-11-03,2026-11-03,Aston Villa,champions,home,0.7729,0.1114,0.1157,0.7729,0.1114,0.1157,
+2026-11-07,2026-11-08,Ath Madrid,liga,away,0.4458,0.3007,0.2535,0.4458,0.3007,0.2535,

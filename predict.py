@@ -125,10 +125,10 @@ def match_date(rival, comp, text):
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  CHANGE ONLY THESE 4 LINES, THEN RUN THE FILE                        ║
 # ╚══════════════════════════════════════════════════════════════════════╝
-OPPONENT = "Aston Villa"       # team name (if you misspell it, you get suggestions)
-COMPETITION = "champions"      # liga | champions | copa | supercopa
-VENUE = "home"            # home | away | neutral
-DATE = ""       # DD/MM/YYYY. Empty = date from the Champions League calendar, or today
+OPPONENT = "Ath Madrid"       # team name (if you misspell it, you get suggestions)
+COMPETITION = "liga"      # liga | champions | copa | supercopa
+VENUE = "away"            # home | away | neutral
+DATE = "08/11/2026"       # DD/MM/YYYY. Empty = date from the Champions League calendar, or today
 # Missing players, optional. Type: star | starter | rotation. Leave {} if nobody is missing.
 ABSENT_BARCA = {}
 ABSENT_OPPONENT = {}

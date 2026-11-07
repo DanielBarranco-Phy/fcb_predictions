@@ -5,3 +5,4 @@ match,opponent,comp,prediction,with_absences,score,actual,status,status_abs
 20/10/2026,Paris SG,champions,Loss (46%),Loss (48%),Paris SG 4-2 Barcelona,Loss,HIT,HIT
 25/10/2026,Real Madrid,liga,Win (56%),Win (56%),Barcelona 1-2 Real Madrid,Loss,MISS,MISS
 31/10/2026,Alaves,liga,Win (86%),Win (83%),Barcelona 6-1 Alaves,Win,HIT,HIT
+03/11/2026,Aston Villa,champions,Win (77%),Win (77%),Barcelona 3-0 Aston Villa,Win,HIT,HIT
