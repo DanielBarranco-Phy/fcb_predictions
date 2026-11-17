@@ -77,6 +77,12 @@ ABSENT_OPPONENT = {}
 
 Missing players lower a team's Elo by a fixed amount (star 40, starter 20, rotation 10). These values are assumptions, not learned from data, so the output always shows both predictions: the base model and the one with absences.
 
+To simulate the rest of the La Liga season 10,000 times and get title, top-4 and relegation probabilities:
+
+```bash
+python simulate.py
+```
+
 Every prediction is saved to `predictions.csv`. `update.py` compares each one with the real result and writes `track_record.csv`.
 
 If a source has not published a result yet, add it as one line in `manual_results.csv`. It is dropped automatically once the official data arrives.
@@ -85,6 +91,7 @@ If a source has not published a result yet, add it as one line in `manual_result
 
 ```
 predict.py           predict Barça's next match
+simulate.py          simulate the rest of the La Liga season 10,000 times
 update.py            refresh data, score past predictions
 src/data.py          download and load matches
 src/elo.py           Elo ratings
